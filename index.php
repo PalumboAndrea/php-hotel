@@ -47,6 +47,12 @@
             ];
         ?>
 
+        <form action="./index.php" method="GET" class="m-3">
+            <input type="text" name="parking" placeholder="Vuoi il parcheggio? (si/no)" class="w-25">
+            <button type="submit" class="btn btn-primary">Invia</button>
+
+        </form>
+
         <table class="table">
             <thead>
                 <tr>
@@ -58,8 +64,30 @@
                 </tr>
             </thead>
             <tbody>
-                <?php  foreach ($hotels as $hotel) {
-                        echo "<tr> \n";
+                <?php  foreach ($hotels as $key => $hotel) {
+                        if ($_GET['parking'] == 'si'){
+                            if ($hotels[$key]['parking'] === false){
+                                unset($hotels[$key]);
+                            } else {
+                                echo "<tr> \n";
+                                foreach ($hotel as $key => $info){
+                                    if ($key == 'parking'){
+                                        if ($info === true){
+                                            $info = 'Presente';
+                                        } else {
+                                            $info = 'Non presente';
+                                        }
+                                    }
+                                    if ($key == 'name'){
+                                        echo "<th> $info </th> \n";
+                                    } else {
+                                        echo "<td> $info </td> \n";
+                                    }
+                                }
+                                echo "</tr>"; 
+                            }
+                        } else {
+                            echo "<tr> \n";
                             foreach ($hotel as $key => $info){
                                 if ($key == 'parking'){
                                     if ($info === true){
@@ -68,15 +96,17 @@
                                         $info = 'Non presente';
                                     }
                                 }
-
                                 if ($key == 'name'){
                                     echo "<th> $info </th> \n";
                                 } else {
                                     echo "<td> $info </td> \n";
                                 }
                             }
-                        echo "</tr>";  
+                            echo "</tr>"; 
                         }
+                         
+                        }
+                        
                 ?>
             </tbody>
         </table>
