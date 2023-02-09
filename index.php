@@ -49,6 +49,7 @@
 
         <form action="./index.php" method="GET" class="m-3">
             <input type="text" name="parking" placeholder="Vuoi il parcheggio? (si/no)" class="w-25">
+            <input type="text" name="vote" placeholder="Da che punteggio vuoi che partano gli hotel?" class="w-25">
             <button type="submit" class="btn btn-primary">Invia</button>
 
         </form>

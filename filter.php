@@ -7,43 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-        <?php if ($_GET['parking']){
-
-        }   ?>
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <?php  foreach ($hotels[0] as $key => $info) {
-                                $title = $key;
-                                echo ("<th> $title </th>");
-                            }
-                    ?>
-                </tr>
-            </thead>
-            <tbody>
-                <?php  foreach ($hotels as $hotel) {
-                        echo "<tr> \n";
-                            foreach ($hotel as $key => $info){
-                                if ($key == 'parking'){
-                                    if ($info === true){
-                                        $info = 'Presente';
-                                    } else {
-                                        $info = 'Non presente';
-                                    }
-                                }
-
-                                if ($key == 'name'){
-                                    echo "<th> $info </th> \n";
-                                } else {
-                                    echo "<td> $info </td> \n";
-                                }
-                            }
-                        echo "</tr>";  
-                        }
-                ?>
-            </tbody>
-        </table>
         
+<p>
+    <?php echo $hotels ?>
+</p>
+
 </body>
 </html>
